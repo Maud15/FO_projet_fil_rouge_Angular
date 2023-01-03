@@ -1,0 +1,6 @@
+<form [formGroup]="loginForm">
+    <input type="text" id="pseudo" formControlName="pseudo">
+    <input type="text" id="password" formControlName="password">
+    <button (click)="onSignIn()">Se connecter</button>
+</form>
+<button routerLink="/signup">S'inscrire</button>

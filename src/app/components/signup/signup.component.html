@@ -1,0 +1,59 @@
+<form style="padding: 8px 16px" [formGroup]="signupForm" (ngSubmit)="doSignup()">
+
+    <div class="form-fields">
+        <div class="form-field">
+            <div class="form-label">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-value">
+                <input id="email" type="email" formControlName="email">
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-label">
+                <label for="lastname">Nom</label>
+            </div>
+            <div class="form-value">
+                <input id="lastname" type="text" formControlName="lastname">
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-label">
+                <label for="pseudo">Identifiant</label>
+            </div>
+            <div class="form-value">
+                <input id="pseudo" type="text" formControlName="pseudo">
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-label">
+                <label for="firstname">Prénom</label>
+            </div>
+            <div class="form-value">
+                <input id="firstname" type="text" formControlName="firstname">
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-label">
+                <label for="mdp">Mot de passe</label>
+            </div>
+            <div class="form-value">
+                <input id="mdp" type="password" formControlName="password">
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-label">
+                <label for="city">Ville</label>
+            </div>
+            <div class="form-value">
+                <input id="city" type="text" formControlName="city">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-buttons">
+        <button id="cancel-edit" class="cancel" type="reset">Annuler</button>
+        <button class="validate" type="submit">Valider</button>
+    </div>
+
+</form>

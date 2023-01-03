@@ -1,0 +1,5 @@
+<div>
+    <div style="padding: 4px 16px;" *ngIf="!(isLoggedIn$ | async)"><a style="text-decoration: none;" routerLink="login">Connexion</a></div>
+    <div style="padding: 4px 16px;" *ngIf="isLoggedIn$ | async"><a style="text-decoration: none;" href="#" (click)="onLogout()">Déconnexion</a></div>
+    <router-outlet></router-outlet>
+</div>
