@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionStorageService} from "./session-storage.service";
 import {BehaviorSubject, catchError, map, Observable} from "rxjs";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class AuthService {
     }
 
     constructor(private http: HttpClient, private sessionStorage: SessionStorageService) { }
+
+
+    signup(newUserData: User): Observable<any> {
+        return this.http
+            .post<any>(`${this.BASE_URL}/signup`, newUserData);
+    }
 
     login(pseudo: string, password: string): Observable<any> {
         const signinRequest = {pseudo, password};

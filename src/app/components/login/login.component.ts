@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,20 @@ import {AuthService} from "../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private authService: AuthService) {
+    loginForm!: FormGroup;
+
+    constructor(private authService: AuthService,private formBuilder: FormBuilder) {
     }
 
     ngOnInit(): void {
+        this.loginForm = this.formBuilder.group({
+            pseudo: ['', Validators.required],
+            password: ['', Validators.required]
+        })
     }
 
     onSignIn(): void {
-        const pseudo = 'Maud2';
-        const password = 'toto2';
-
-        this.authService.login(pseudo, password).subscribe({
+        this.authService.login(this.loginForm.value.pseudo, this.loginForm.value.password).subscribe({
             next: (isConnected: boolean) => {
                 console.log('CONNECTED : ' + isConnected)
             },

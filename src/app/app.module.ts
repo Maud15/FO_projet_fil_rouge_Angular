@@ -7,11 +7,13 @@ import {AppComponent} from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import {AuthInterceptorProviders} from "./helpers/auth.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        SignupComponent
     ],
     imports: [
         BrowserModule,
