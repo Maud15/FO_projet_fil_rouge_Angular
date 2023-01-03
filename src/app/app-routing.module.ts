@@ -3,12 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {IsSigninGuardService} from "./helpers/is-signin-guard.service";
 import {SignupComponent} from "./components/signup/signup.component";
+import {FullCalendarComponent} from "./components/calendar/full-calendar/full-calendar.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'calendar', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    // {path: 'myPath', component: MyComponent, canActivate: [IsSigninGuardService]},
+    {path: 'calendar', component: FullCalendarComponent/*, canActivate: [IsSigninGuardService]*/},
 ];
 
 @NgModule({
