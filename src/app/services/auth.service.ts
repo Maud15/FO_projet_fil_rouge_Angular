@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionStorageService} from "./session-storage.service";
-import {catchError, map, Observable} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,12 @@ import {catchError, map, Observable} from "rxjs";
 export class AuthService {
 
     BASE_URL = 'http://localhost:8080/api/auth';
+
+    private loggedIn = new BehaviorSubject<boolean>(!!this.sessionStorage.getToken());
+
+    get isLoggedIn() {
+        return this.loggedIn.asObservable();
+    }
 
     constructor(private http: HttpClient, private sessionStorage: SessionStorageService) { }
 
@@ -26,5 +32,14 @@ export class AuthService {
                     throw new Error(`Error login for pseudo : ${pseudo}`)
                 })
             );
+    }
+
+    logout() {
+        this.loggedIn.next(false);
+        this.sessionStorage.clearSession();
+    }
+
+    isConnected(): boolean {
+        return !!this.sessionStorage.getToken();
     }
 }

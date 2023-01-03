@@ -3,9 +3,7 @@ import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {Observable} from "rxjs";
 import {SessionStorageService} from "../services/session-storage.service";
 
-@Injectable(/*{
-  providedIn: 'root'
-}*/)
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private sessionStorage: SessionStorageService) { }
