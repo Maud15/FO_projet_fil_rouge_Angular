@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
 
     ngOnInit(): void {
         this.signupForm = this.formBuilder.group({
-            email: ['', Validators.required,Validators.email],
+            email: ['', [Validators.required,Validators.email]],
             pseudo: ['', Validators.required],
             password: ['', Validators.required],
             lastname: [''],
@@ -49,4 +49,7 @@ export class SignupComponent implements OnInit {
         return false;
     }
 
+    get f() {
+        return this.signupForm.controls;
+    }
 }
