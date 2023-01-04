@@ -6,10 +6,13 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {FullCalendarComponent} from "./components/calendar/full-calendar/full-calendar.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: 'calendar', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    //TODO : remove when home is implemented
+    {path: 'home', redirectTo: 'calendar', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'calendar', component: FullCalendarComponent/*, canActivate: [IsSigninGuardService]*/},
+    // {path: 'home', component: MyComponent, canActivate: [IsSigninGuardService]},
 ];
 
 @NgModule({
