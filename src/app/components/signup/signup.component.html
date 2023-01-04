@@ -1,59 +1,43 @@
 <form style="padding: 8px 16px" [formGroup]="signupForm" (ngSubmit)="doSignup()">
 
-    <div class="form-fields">
-        <div class="form-field">
-            <div class="form-label">
-                <label for="email">Email</label>
-            </div>
-            <div class="form-value">
-                <input id="email" type="email" formControlName="email">
-            </div>
-        </div>
-        <div class="form-field">
-            <div class="form-label">
-                <label for="lastname">Nom</label>
-            </div>
-            <div class="form-value">
-                <input id="lastname" type="text" formControlName="lastname">
-            </div>
-        </div>
-        <div class="form-field">
-            <div class="form-label">
-                <label for="pseudo">Identifiant</label>
-            </div>
-            <div class="form-value">
-                <input id="pseudo" type="text" formControlName="pseudo">
-            </div>
-        </div>
-        <div class="form-field">
-            <div class="form-label">
-                <label for="firstname">Prénom</label>
-            </div>
-            <div class="form-value">
-                <input id="firstname" type="text" formControlName="firstname">
-            </div>
-        </div>
-        <div class="form-field">
-            <div class="form-label">
-                <label for="mdp">Mot de passe</label>
-            </div>
-            <div class="form-value">
-                <input id="mdp" type="password" formControlName="password">
-            </div>
-        </div>
-        <div class="form-field">
-            <div class="form-label">
-                <label for="city">Ville</label>
-            </div>
-            <div class="form-value">
-                <input id="city" type="text" formControlName="city">
-            </div>
-        </div>
-    </div>
+<section>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+<!--    <mat-error *ngIf="f['email'].invalid">Email is required</mat-error>-->
+<!--        <mat-error *ngIf="f['email'].errors?.['required']">Email is required</mat-error>-->
+        <mat-error *ngIf="f['email'].errors?.['email']"></mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Identifiant</mat-label>
+        <input matInput formControlName="pseudo">
+<!--        <mat-error *ngIf="f['email'].errors?.['required']">Pseudo is required</mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput formControlName="password">
+<!--        <mat-error *ngIf="f['email'].errors?.['required']">Mot de passe </mat-error>-->
+    </mat-form-field>
+</section>
+
+<section>
+    <mat-form-field appearance="fill">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="lastname">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Prénom</mat-label>
+        <input matInput formControlName="firstname">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Ville</mat-label>
+        <input matInput formControlName="city">
+    </mat-form-field>
+</section>
 
     <div class="form-buttons">
-        <button id="cancel-edit" class="cancel" type="reset">Annuler</button>
-        <button class="validate" type="submit">Valider</button>
+        <button mat-stroked-button id="cancel-edit" class="cancel" type="reset">Annuler</button>
+        <button mat-stroked-button class="validate" type="submit">Valider</button>
     </div>
 
 </form>

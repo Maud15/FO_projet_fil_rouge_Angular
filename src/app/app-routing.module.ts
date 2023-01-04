@@ -6,9 +6,11 @@ import {SignupComponent} from "./components/signup/signup.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
+    //TODO : remove when home is implemented
+    {path: 'home', redirectTo: 'signup', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    // {path: 'myPath', component: MyComponent, canActivate: [IsSigninGuardService]},
+    // {path: 'home', component: MyComponent, canActivate: [IsSigninGuardService]},
 ];
 
 @NgModule({

@@ -1,6 +1,20 @@
 <form [formGroup]="loginForm">
-    <input type="text" id="pseudo" formControlName="pseudo">
-    <input type="text" id="password" formControlName="password">
-    <button (click)="onSignIn()">Se connecter</button>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Identifiant</mat-label>
+        <input matInput formControlName="pseudo">
+        <!--        <mat-error *ngIf="f['email'].errors?.['required']">Pseudo is required</mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="onSignIn()">Se connecter</button>
 </form>
-<button routerLink="/signup">S'inscrire</button>
+
+<button mat-raised-button routerLink="/signup">S'inscrire</button>
