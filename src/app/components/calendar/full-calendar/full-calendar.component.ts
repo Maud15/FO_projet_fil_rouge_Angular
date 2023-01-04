@@ -5,6 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from '../../event-utils';
+import frLocale from "@fullcalendar/core/locales/fr";
 
 @Component({
   selector: 'app-full-calendar',
@@ -14,6 +15,7 @@ import { INITIAL_EVENTS, createEventId } from '../../event-utils';
 export class FullCalendarComponent {
     calendarVisible = true;
     calendarOptions: CalendarOptions = {
+        locale: frLocale,
         plugins: [
             interactionPlugin,
             dayGridPlugin,
