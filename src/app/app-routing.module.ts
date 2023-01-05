@@ -13,9 +13,9 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'calendars', component: CalendarListComponent, canActivate: [IsSigninGuardService]},
-    {path: 'calendar/main', component: CalendarContainerComponent/*, canActivate: [IsSigninGuardService]*/},
-    {path: 'calendar/:id', component: FullCalendarComponent/*, canActivate: [IsSigninGuardService]*/},
-    {path: 'user/:pseudo', component: ProfileComponent/*, canActivate: [IsSigninGuardService]*/},
+    {path: 'calendar/main', component: CalendarContainerComponent, canActivate: [IsSigninGuardService]},
+    {path: 'calendar/:id', component: FullCalendarComponent, canActivate: [IsSigninGuardService]},
+    {path: 'user/:pseudo', component: ProfileComponent, canActivate: [IsSigninGuardService]},
 
 
 

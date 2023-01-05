@@ -26,8 +26,10 @@ export class LoginComponent implements OnInit {
     onSignIn(): void {
         this.authService.login(this.loginForm.value.pseudo, this.loginForm.value.password).subscribe({
             next: (isConnected: boolean) => {
-                console.log('CONNECTED AS ' + this.loginForm.value.pseudo);
-                this.router.navigate(['/calendars']);
+                if(isConnected) {
+                    console.log('CONNECTED AS ' + this.loginForm.value.pseudo);
+                    this.router.navigate(['/']);
+                }
             },
             error: (err) => {
                 console.log(err)
