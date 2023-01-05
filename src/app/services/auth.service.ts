@@ -33,6 +33,7 @@ export class AuthService {
                 map( (jwtResponse: any) => {
                     this.sessionStorage.saveToken(jwtResponse.token);
                     this.sessionStorage.saveUser(jwtResponse.pseudo);
+                    this.loggedIn.next(true);
                     return true;
                 }),
                 catchError(() => {
