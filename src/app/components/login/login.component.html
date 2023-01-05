@@ -1,3 +1,5 @@
+<h1>Klend'art</h1>
+
 <form [formGroup]="loginForm">
 
     <mat-form-field appearance="fill">
@@ -14,7 +16,9 @@
         </button>
     </mat-form-field>
 
-    <button mat-stroked-button (click)="onSignIn()">Se connecter</button>
 </form>
 
-<button mat-raised-button routerLink="/signup">S'inscrire</button>
+<div class="form-buttons">
+    <button mat-button class="redirect" routerLink="/signup">S'inscrire</button>
+    <button mat-flat-button class="validate" (click)="onSignIn()">Se connecter</button>
+</div>
