@@ -8,13 +8,9 @@ import {Observable} from "rxjs";
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'FO_Projet_Fil_Rouge';
+    title = 'Klen\'art';
     isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn;
 
     constructor(private authService: AuthService) {
-    }
-
-    onLogout() {
-        this.authService.logout();
     }
 }

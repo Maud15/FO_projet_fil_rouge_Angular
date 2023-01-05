@@ -1,0 +1,22 @@
+#sidebar-container {
+    padding: 3em 2vw;
+}
+.toggle-sidebar {
+    position: absolute;
+    padding: 1.8em 0.5em;
+    color: white;
+    background: var(--main-color-darkest);
+    opacity: 0.8;
+    border: none;
+    border-radius: 0 12px 12px 0;
+    right: calc(-1em - 7px);
+    top: 2vh;
+    cursor: pointer;
+}
+
+.toggle-sidebar.closed:before {
+    content: ">";
+}
+.toggle-sidebar:before {
+    content: "<";
+}
