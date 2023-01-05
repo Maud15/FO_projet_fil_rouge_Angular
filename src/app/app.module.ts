@@ -18,13 +18,23 @@ import {AppComponent} from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FullCalendarComponent } from './components/calendar/full-calendar/full-calendar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/calendar/sidebar/sidebar.component';
+import { CalendarContainerComponent } from './components/calendar/calendar-container/calendar-container.component';
+import { CalendarListComponent } from './components/calendar/calendar-list/calendar-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         SignupComponent,
-        FullCalendarComponent
+        FullCalendarComponent,
+        NavbarComponent,
+        SidebarComponent,
+        CalendarContainerComponent,
+        CalendarListComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,
