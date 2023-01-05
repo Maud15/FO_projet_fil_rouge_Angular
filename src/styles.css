@@ -1,4 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+    width: auto;
+    min-width: fit-content;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    height: 100%;
+}
+body button {
+    letter-spacing: 0.05em;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root body {
+    --main-hue:195deg;
+    --main-color-darkest: hsl(var(--main-hue) 50% 20%);
+    --main-color-darker: hsl(var(--main-hue) 80% 25%);
+    --main-color: hsl(var(--main-hue) 50% 35%);
+    --main-color-lighter: hsl(var(--main-hue) 60% 80%);
+    --main-color-lightest: hsl(var(--main-hue) 85% 95%);
+
+    --userInfo-color: hsl( calc(var(--main-hue) + 190deg) 70% 35%);
+
+    --alert-hue: 0deg;
+    --alert-color-darker: hsl(var(--alert-hue) 82% 28%);
+    --alert-color: hsl(0deg 46% 46%);
+    --alert-color-faded: hsl(var(--alert-hue) 100% 95%);
+    --info-color: #205480;
+    --info-color-faded: #e6f3ff;
+
+    --fc-button-bg-color: var(--main-color-darker);
+    --fc-button-border-color: var(--fc-button-bg-color);
+    --fc-button-hover-bg-color: var(--main-color-darkest);
+    --fc-button-hover-border-color: var(--fc-button-hover-bg-color);
+
+    --fc-event-bg-color: var(--main-color);
+    --fc-event-border-color: var(--fc-event-bg-color);
+
+    --fc-button-active-bg-color: var(--main-color-lighter);
+    --fc-button-active-border-color: var(--main-color);
+}
+/* FULL CALENDAR STYLE OVERIDE */
+body .fc .fc-button-primary:disabled {
+    border: 1px solid var(--main-color-darkest);
+}
+body .fc .fc-button-primary:not(:disabled).fc-button-active, body .fc .fc-button-primary:not(:disabled):active {
+    color: var(--fc-button-active-border-color);
+}
+button.fc-today-button.fc-button.fc-button-primary {
+    border-radius: 30px;
+}
+/* END FULL CALENDAR STYLE OVERIDE */
+
+app-sidebar {
+    position: relative;
+    margin: 0;
+    color: white;
+    background: var(--main-color-darkest);
+    width: auto;
+}
+app-sidebar.closed {
+    width: 0;
+}
+
+app-calendar-container {
+    display: flex;
+    flex-direction: row;
+}
