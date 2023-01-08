@@ -25,11 +25,8 @@ button:hover {
 }
 .menu.right button {
     background: transparent;
-    color: var(--main-color-darker);
-    padding: 1px 2px;
+    color: dimgray;
     border: none;
-    border-radius: 0;
-    border-bottom: 1px solid var(--main-color-darker);
-    /*text-decoration: underline;*/
+    text-decoration: underline;
     box-shadow: none;
  }
