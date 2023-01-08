@@ -5,7 +5,7 @@
     position: absolute;
     padding: 1.8em 0.5em;
     color: white;
-    background: var(--main-color-darkest);
+    background: var(--main-color);
     opacity: 0.8;
     border: none;
     border-radius: 0 12px 12px 0;

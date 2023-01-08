@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit {
 
+    hide = true;
     signupForm!: FormGroup;
     userData!: User;
     constructor(private authServ: AuthService, private formBuilder: FormBuilder, private router: Router) { }
@@ -40,7 +41,7 @@ export class SignupComponent implements OnInit {
                 "city": this.signupForm.value.city
             }
             this.authServ.signup(this.userData).subscribe({
-                next: (result) => {
+                next: () => {
                     this.router.navigate(['/login']);
                 },
                 error: (err) => alert(err)

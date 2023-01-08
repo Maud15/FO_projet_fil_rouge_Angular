@@ -1,22 +1,29 @@
 button {
     height: 100%;
     border: none;
-    padding: 1.5vh 2vw;
+    margin: 0 6px;
+    padding: 1.2vh 1.5vw;
     background: transparent;
-    color: white;
+    color: var(--main-color-lightest);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
     transition: border-radius 0.5s;
 }
-button:hover {
-    background: var(--main-color-lighter);
-    color: var(--main-color-darkest);
-    border-radius: 6px;
-}
 .menu.center {
     display: flex;
+    flex:2;
     justify-items: center;
     align-items: center;
-    flex:2;
+    margin: 0 2vw;
 }
+.menu.right button {
+     text-decoration: underline;
+ }
+.menu.center button:hover {
+     border-radius: 20px;
+     border-top-color: var(--main-color-lighter);
+     border-bottom-color: var(--main-color-lighter);
+ }

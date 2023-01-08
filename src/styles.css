@@ -70,7 +70,7 @@ app-sidebar {
     display: block;
     margin: 0;
     color: white;
-    background: var(--main-color-darkest);
+    background: var(--main-color);
 }
 app-sidebar.closed #sidebar-container {
     display: none;
