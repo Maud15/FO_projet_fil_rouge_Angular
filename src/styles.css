@@ -88,10 +88,10 @@ app-login, app-signup {
     width: fit-content;
     top: 20vh;
     margin: auto;
-    padding: 8vh 2vw;
+    padding: 8vh 4vw;
     border-radius: 8px;
     background: white;
-    box-shadow: 0 0 12px var(--main-color-lighter);
+    box-shadow: 0 0 4px -1px grey;/*0 0 12px var(--main-color-lighter);*/
 }
 
 h1 {

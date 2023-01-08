@@ -28,14 +28,11 @@ export class SignupComponent implements OnInit {
     }
 
     doSignup(): boolean {
-        let email = this.signupForm.value.email;
-        let pseudo = this.signupForm.value.pseudo;
-        let password = this.signupForm.value.password;
         if(this.signupForm.valid) {
             this.userData = {
-                "email": email,
-                "pseudo": pseudo,
-                "password": password,
+                "email": this.signupForm.value.email,
+                "pseudo": this.signupForm.value.pseudo,
+                "password": this.signupForm.value.password,
                 "lastname": this.signupForm.value.lastname,
                 "firstname": this.signupForm.value.firstname,
                 "city": this.signupForm.value.city
