@@ -1,16 +1,20 @@
 button {
-    height: 100%;
-    border: none;
+    position: relative;
     margin: 0 6px;
-    padding: 1.2vh 1.5vw;
-    background: transparent;
-    color: var(--main-color-lightest);
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    padding: 6px 10px;
+    background: var(--main-color);
+    color: white;
+    border-width: 0 0 2px 2px;
+    border-style: solid;
+    border-color: var(--main-color-darker);
+    border-radius: 3px;
     font-size: 1rem;
-    border-radius: 4px;
     cursor: pointer;
-    transition: border-radius 0.5s;
+    box-shadow: -1px 1px 3px -2px var(--main-color-darkest);
+}
+button:hover {
+    box-shadow: none;
+    border-color: var(--main-color);
 }
 .menu.center {
     display: flex;
@@ -20,10 +24,12 @@ button {
     margin: 0 2vw;
 }
 .menu.right button {
-     text-decoration: underline;
- }
-.menu.center button:hover {
-     border-radius: 20px;
-     border-top-color: var(--main-color-lighter);
-     border-bottom-color: var(--main-color-lighter);
+    background: transparent;
+    color: var(--main-color-darker);
+    padding: 1px 2px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--main-color-darker);
+    /*text-decoration: underline;*/
+    box-shadow: none;
  }

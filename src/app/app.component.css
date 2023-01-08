@@ -3,7 +3,8 @@ navbar {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: var(--main-color-darkest);
+    background-color: hsl(var(--main-hue) 0% 95%);
     padding: 0.5vh 2vw;
     max-height: 60px;
+    box-shadow: 1px 1px 6px -3px var(--main-color-darkest);
 }

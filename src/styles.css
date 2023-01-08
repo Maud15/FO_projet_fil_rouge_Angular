@@ -10,9 +10,6 @@ body {
     font-size: 0.9rem;
     height: 100%;
 }
-body button {
-    letter-spacing: 0.05em;
-}
 
 :root body {
     --main-hue:195deg;
@@ -31,7 +28,7 @@ body button {
     --info-color: #205480;
     --info-color-faded: #e6f3ff;
 
-    --fc-button-bg-color: var(--main-color-darker);
+    --fc-button-bg-color: var(--main-color);
     --fc-button-border-color: var(--fc-button-bg-color);
     --fc-button-hover-bg-color: var(--main-color-darkest);
     --fc-button-hover-border-color: var(--fc-button-hover-bg-color);
@@ -39,8 +36,8 @@ body button {
     --fc-event-bg-color: var(--main-color);
     --fc-event-border-color: var(--fc-event-bg-color);
 
-    --fc-button-active-bg-color: var(--main-color-lighter);
-    --fc-button-active-border-color: var(--main-color);
+    --fc-button-active-bg-color: var(--main-color-lightest);
+    --fc-button-active-border-color: var(--main-color-darker);
 
     --fc-today-bg-color: var(--main-color-lightest);
     --fc-past-bg-color: #f5f5f5;
@@ -71,6 +68,7 @@ app-sidebar {
     margin: 0;
     color: white;
     background: var(--main-color);
+    box-shadow: 1px 0 6px -6px var(--main-color-darkest);
 }
 app-sidebar.closed #sidebar-container {
     display: none;
@@ -91,7 +89,7 @@ app-login, app-signup {
     padding: 8vh 4vw;
     border-radius: 8px;
     background: white;
-    box-shadow: 0 0 4px -1px grey;/*0 0 12px var(--main-color-lighter);*/
+    box-shadow: 0 0 4px -1px grey;
 }
 
 h1 {
@@ -99,7 +97,6 @@ h1 {
     display: block;
     width: fit-content;
     height: fit-content;
-    /*margin: 1vh 2vw;*/
     padding-right: 14px;
     background: var(--main-color-lighter);
     color: var(--main-color-darkest);

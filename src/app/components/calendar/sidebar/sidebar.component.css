@@ -4,14 +4,15 @@
 .toggle-sidebar {
     position: absolute;
     padding: 1.8em 0.5em;
-    color: white;
-    background: var(--main-color);
-    opacity: 0.8;
+    top: 2vh;
+    right: calc(-1em - 7px);
     border: none;
     border-radius: 0 12px 12px 0;
-    right: calc(-1em - 7px);
-    top: 2vh;
+    background: var(--main-color);
+    color: white;
+    opacity: 0.8;
     cursor: pointer;
+    box-shadow: 1px 0 6px -6px var(--main-color-darkest);
 }
 
 .toggle-sidebar.closed:before {
