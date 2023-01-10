@@ -62,22 +62,6 @@ button.fc-today-button.fc-button.fc-button-primary {
 }
 /* END FULL CALENDAR STYLE OVERIDE */
 
-app-sidebar {
-    position: relative;
-    display: block;
-    margin: 0;
-    color: white;
-    background: var(--main-color);
-    box-shadow: 1px 0 6px -6px var(--main-color-darkest);
-}
-app-sidebar.closed #sidebar-container {
-    display: none;
-}
-
-app-calendar-container {
-    display: flex;
-    flex-direction: row;
-}
 app-login, app-signup {
     position: relative;
     display: flex;
@@ -90,6 +74,11 @@ app-login, app-signup {
     border-radius: 8px;
     background: white;
     box-shadow: 0 0 4px -1px grey;
+}
+app-full-calendar {
+    width: available;
+    width: -moz-available;
+    width: -webkit-fill-available;
 }
 
 h1 {
@@ -118,5 +107,5 @@ h1:first-letter {
     vertical-align: sub;
     border-color: var(--main-color-darkest);
     border-style: solid;
-    border-width: 1px 0 2px 2px;
+    border-width: 0 0 2px 2px;
 }

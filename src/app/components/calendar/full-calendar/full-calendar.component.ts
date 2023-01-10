@@ -44,6 +44,7 @@ export class FullCalendarComponent {
         */
     };
     currentEvents: EventApi[] = [];
+    hideSidebar: boolean =true;
 
     constructor(private changeDetector: ChangeDetectorRef) {
     }
@@ -85,4 +86,13 @@ export class FullCalendarComponent {
         this.changeDetector.detectChanges();
     }
 
+
+    toggleSidebar($event: MouseEvent): void {
+        this.hideSidebar = !this.hideSidebar;
+        document.getElementsByTagName('app-sidebar')[0].classList.toggle('closed');
+        if($event.target instanceof Element) {
+            $event.target.classList.toggle('closed');
+        }
+        console.log(document.getElementsByTagName('app-sidebar')[0]);
+    }
 }
