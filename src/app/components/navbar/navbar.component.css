@@ -25,7 +25,7 @@ button:hover {
 }
 .menu.right button {
     background: transparent;
-    color: dimgray;
+    color: var(--main-color-darker);
     border: none;
     text-decoration: underline;
     box-shadow: none;
