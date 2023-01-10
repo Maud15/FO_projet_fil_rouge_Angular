@@ -1,2 +1,36 @@
 <p>Page profile utilisateur</p>
 <!--TODO-->
+
+<div>
+    <p>Pseudo : {{user.pseudo }}</p>
+    <p>Prénom : {{user.firstname}} </p>
+    <p>Nom : {{user.lastname}}</p>
+    <p>Email : {{user.email}}</p>
+    <p>Ville : {{user.city}}</p>
+    <p> Calendrier : {{user.calendarRightsList}}</p>
+
+    <form
+            [formGroup]="modifyForm"
+            >
+        Prénom
+        <input
+            type="text"
+            value={{user.firstname}}
+            formControlName="firstname">
+        Nom
+        <input
+            type="text"
+            value={{user.lastname}}
+            formControlName="lastname">
+
+        <button
+            type = "submit"
+            (click)="submitUser()">SUBMIT</button>
+
+    </form>
+
+
+</div>
+
+
+
