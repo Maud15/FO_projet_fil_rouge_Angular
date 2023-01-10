@@ -17,7 +17,11 @@ li {
 b { /* used for event dates/times */
     margin-right: 3px;
 }
-
+full-calendar {
+    border: 1px solid lightgray;
+    padding: 2em;
+    background-color: white;
+}
 .calendar-app {
     display: flex;
     min-height: 100%;
@@ -26,7 +30,8 @@ b { /* used for event dates/times */
 }
 .calendar-main {
     flex-grow: 1;
-    padding: 3em;
+    padding: 2em;
+    background-color: var(--background-color);
 }
 
 .fc { /* the calendar root */
@@ -48,7 +53,8 @@ calendar-app {
     margin: 0;
     color: white;
     background: var(--main-color);
-    box-shadow: 1px 0 6px -6px var(--main-color-darkest);
+    box-shadow: 1px 0 6px -3px var(--main-color-darkest);
+    z-index: 1;
 }
 .calendar-sidebar.closed #sidebar-container {
     display: none;
@@ -59,7 +65,9 @@ calendar-app {
 }
 #sidebar-container h2 {
     padding: 1em 1em 0.5em 1em;
-    background: var(--main-color-lighter);
+    background: var(--background-color);
+    color: var(--main-color-darkest);
+    box-shadow: 1px 1px 6px -3px var(--main-color-darkest);
 }
 #sidebar-container section {
     margin-bottom: 2em;

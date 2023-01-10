@@ -12,7 +12,9 @@ body {
 }
 
 :root body {
-    --main-hue:195deg;
+    --background-color: #ededed;
+
+    --main-hue:200deg;
     --main-color-darkest: hsl(var(--main-hue) 50% 20%);
     --main-color-darker: hsl(var(--main-hue) 80% 25%);
     --main-color: hsl(var(--main-hue) 50% 35%);

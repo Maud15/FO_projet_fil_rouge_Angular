@@ -2,19 +2,15 @@ button {
     position: relative;
     margin: 0 6px;
     padding: 6px 10px;
-    background: var(--main-color);
-    color: white;
-    border-width: 0 0 2px 2px;
-    border-style: solid;
-    border-color: var(--main-color-darker);
-    border-radius: 3px;
+    color: var(--main-color-darker);
+    border: none;
+    border-bottom: 1px solid hsl(var(--main-hue) 0% 95%);
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: -1px 1px 3px -2px var(--main-color-darkest);
 }
 button:hover {
-    box-shadow: none;
-    border-color: var(--main-color);
+    border-bottom-color: var(--main-color-darker);
+    box-shadow: 0 8px 8px -10px var(--main-color);
 }
 .menu.center {
     display: flex;
