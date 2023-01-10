@@ -19,8 +19,6 @@ export class UserService {
     }
     //TODO pas fini sur la modification de l'utilisateur
     modifyUser(userData: UserData): void{
-        console.log(`${baseUrl}/users/${this.sessionStorage.getUser()}`);
-        console.log(JSON.stringify(userData));
-        this.http.put<UserData>(`${baseUrl}/users/${this.sessionStorage.getUser()}`, JSON.stringify(userData)).subscribe();
+        this.http.put<UserData>(`${baseUrl}/users/profile`, userData).subscribe();
     }
 }
