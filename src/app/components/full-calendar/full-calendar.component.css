@@ -28,7 +28,8 @@ full-calendar {
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
 }
-.calendar-main {
+#calendar-main {
+    position: relative;
     flex-grow: 1;
     padding: 2em;
     background-color: var(--background-color);
@@ -47,7 +48,7 @@ calendar-app {
     display: flex;
     flex-direction: row;
 }
-.calendar-sidebar {
+#calendar-sidebar {
     position: relative;
     display: block;
     margin: 0;
@@ -56,7 +57,7 @@ calendar-app {
     box-shadow: 1px 0 6px -3px var(--main-color-darkest);
     z-index: 1;
 }
-.calendar-sidebar.closed #sidebar-container {
+#calendar-sidebar.closed #sidebar-container {
     display: none;
 }
 

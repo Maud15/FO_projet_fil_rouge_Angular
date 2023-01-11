@@ -3,8 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {IsSigninGuardService} from "./helpers/is-signin-guard.service";
 import {SignupComponent} from "./components/signup/signup.component";
-import {FullCalendarComponent} from "./components/calendar/full-calendar/full-calendar.component";
-import {CalendarListComponent} from "./components/calendar/calendar-list/calendar-list.component";
+import {FullCalendarComponent} from "./components/full-calendar/full-calendar.component";
+import {CalendarListComponent} from "./components/calendar-list/calendar-list.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [

@@ -1,6 +1,6 @@
 <div class="calendar-app">
 
-    <div class='calendar-sidebar'>
+    <div id='calendar-sidebar'>
         <button type="button" (click)="toggleSidebar($event)" class="toggle-sidebar closed"></button>
         <div id="sidebar-container">
 
@@ -42,11 +42,11 @@
 
 
 
-    <div class='calendar-main'>
-        <full-calendar *ngIf='calendarVisible' [options]='calendarOptions'>
+    <div id='calendar-main'>
+        <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' [events]="events">
             <ng-template #eventContent let-arg>
-                <b>{{ arg.timeText }}</b>
-                <i>{{ arg.event.title }}</i>
+                <i>{{ arg.timeText }}</i>
+                <b>{{ arg.event.title }}</b>
             </ng-template>
         </full-calendar>
     </div>

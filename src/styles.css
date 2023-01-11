@@ -8,7 +8,7 @@ body {
     font-family: sans-serif;
     letter-spacing: 0.05em;
     font-size: 0.9rem;
-    height: 100%;
+    min-height: 100vh;
 }
 
 :root body {
@@ -29,6 +29,8 @@ body {
     --alert-color-faded: hsl(var(--alert-hue) 100% 95%);
     --info-color: #205480;
     --info-color-faded: #e6f3ff;
+    --warn-color: #b76e00;
+    --warn-color-faded: #ffecd1;
 
     --fc-button-bg-color: var(--main-color);
     --fc-button-border-color: var(--fc-button-bg-color);
@@ -110,4 +112,38 @@ h1:first-letter {
     border-color: var(--main-color-darkest);
     border-style: solid;
     border-width: 0 0 2px 2px;
+}
+
+
+.toast {
+    position: absolute;
+    margin: 0 auto;
+    padding: 1em 4em;
+    z-index: 5;
+    width: calc(100% - 22em);
+    left: 8em;
+    bottom: 2em;
+    opacity: 1;
+    transition: bottom 1500ms, opacity 1500ms;
+}
+.toast.info-message {
+    background: var(--info-color-faded);
+    color: var(--info-color);
+    border: 1px solid var(--info-color);
+}
+.toast.info-message p:before {
+    content:"INFO : ";
+}
+
+.toast.warn-message {
+    background: var(--warn-color-faded);
+    color: var(--warn-color);
+    border: 1px solid var(--warn-color);
+}
+.toast.warn-message p:before {
+    content:"Attention : ";
+}
+.toast.removing {
+    opacity: 0;
+    bottom: -2em;
 }
