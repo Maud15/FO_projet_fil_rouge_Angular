@@ -7,5 +7,5 @@ export interface UserData {
     'firstname': String,
     'city': String,
     "roleList": String,
-    "calendarRightsList": CalendarRightsList,
+    "calendarRightsList"?: CalendarRightsList,
 }

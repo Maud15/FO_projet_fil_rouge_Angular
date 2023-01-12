@@ -38,7 +38,7 @@ export class EventService {
     getAllFromMain(): Observable<CalEvent[]> {
         return this.http.get<CalEvent[]>(`${this.baseUrl}/main/events`);
     }
-    updateFromMain(calendarId: number, eventId: number, newData: CalEvent): Observable<CalEvent> {
+    updateFromMain(eventId: number, newData: CalEvent): Observable<CalEvent> {
         return this.http.put<CalEvent>(`${this.baseUrl}/main/event/${eventId}`, newData);
     }
     deleteFromMain(eventId: number): Observable<any> {

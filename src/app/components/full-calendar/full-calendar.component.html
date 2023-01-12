@@ -1,19 +1,24 @@
 <div class="calendar-app">
 
-    <div id='calendar-sidebar'>
-        <button type="button" (click)="toggleSidebar($event)" class="toggle-sidebar closed"></button>
+    <div id='calendar-sidebar' class="">
+        <button type="button" (click)="toggleSidebar()" class="toggle-sidebar fc-icon fc-icon-chevrons-left"></button>
         <div id="sidebar-container">
 
             <section id="sidebar-infos">
-                <h2>Instructions</h2>
+                <h2 (click)="toggleSidebarSection($event,'sidebar-infos')">
+                    <div class="fc-icon fc-icon-chevron-right rotate90"></div>
+                    Infos
+                </h2>
                 <ul>
-                    <li>Select dates and you will be prompted to create a new event</li>
-                    <li>Drag, drop, and resize events</li>
-                    <li>Click an event to delete it</li>
+                    <li>Propriétaire : <b>{{ user.pseudo }}</b></li>
+                    <li>Collaborateurs : </li>
                 </ul>
             </section>
             <section id="sidebar-options">
-                <h2>Options</h2>
+                <h2 (click)="toggleSidebarSection($event,'sidebar-options')">
+                    <div class="fc-icon fc-icon-chevron-right rotate90"></div>
+                    Options
+                </h2>
                 <ul>
                     <li class="calendar-option">
                         <label for="display-weekends">
@@ -28,12 +33,26 @@
                 </ul>
             </section>
             <section id="sidebar-events">
-                <h2>All Events ({{currentEvents.length}})</h2>
+                <h2 (click)="toggleSidebarSection($event,'sidebar-events')">
+                    <div class="fc-icon fc-icon-chevron-right rotate90"></div>
+                    All Events ({{currentEvents.length}})
+                </h2>
                 <ul>
                     <li *ngFor='let event of currentEvents'>
-                        <b>{{event.startStr}}</b>
-                        <i>{{event.title}}</i>
+                        <b>{{event.startStr}} - </b>
+                        <span>{{event.title}}</span>
                     </li>
+                </ul>
+            </section>
+            <section id="sidebar-help" class="closed">
+                <h2 (click)="toggleSidebarSection($event,'sidebar-help')">
+                    <div class="fc-icon fc-icon-chevron-right"></div>
+                    Help
+                </h2>
+                <ul>
+                    <li>Select dates and you will be prompted to create a new event</li>
+                    <li>Drag, drop, and resize events</li>
+                    <li>Click an event to delete it</li>
                 </ul>
             </section>
 
@@ -45,8 +64,11 @@
     <div id='calendar-main'>
         <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' [events]="events">
             <ng-template #eventContent let-arg>
-                <i>{{ arg.timeText }}</i>
-                <b>{{ arg.event.title }}</b>
+                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
+                    <b>{{ arg.timeText }}</b>
+                    <span *ngIf='arg.timeText.length>0 && arg.event.title.length>0'> </span>
+                    <span>{{ arg.event.title }}</span>
+                </div>
             </ng-template>
         </full-calendar>
     </div>
