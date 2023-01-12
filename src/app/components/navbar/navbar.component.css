@@ -1,0 +1,27 @@
+button {
+    position: relative;
+    margin: 0 6px;
+    padding: 6px 10px;
+    color: var(--main-color-darker);
+    border: none;
+    border-bottom: 1px solid hsl(var(--main-hue) 0% 95%);
+    font-size: 1rem;
+    cursor: pointer;
+}
+button:hover {
+    border-bottom-color: var(--main-color-darker);
+    box-shadow: 0 8px 8px -10px var(--main-color);
+}
+.menu.center {
+    display: flex;
+    flex:2;
+    justify-items: center;
+    align-items: center;
+    margin: 0 2vw;
+}
+.menu.right button {
+    background: transparent;
+    color: var(--main-color-darker);
+    border: none;
+    box-shadow: none;
+ }

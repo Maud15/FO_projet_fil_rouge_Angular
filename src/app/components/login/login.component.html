@@ -1,0 +1,23 @@
+<h1>Klend'art</h1>
+
+<form [formGroup]="loginForm">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Identifiant</mat-label>
+        <input matInput formControlName="pseudo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+        <button style="display: none" type="submit" (click)="onSignIn()"></button>
+</form>
+
+<div class="form-buttons">
+    <button mat-button class="redirect" routerLink="/signup">S'inscrire</button>
+    <button type="submit" mat-flat-button class="validate" (click)="onSignIn()">Se connecter</button>
+</div>

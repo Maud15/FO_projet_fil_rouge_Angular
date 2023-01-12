@@ -1,0 +1,16 @@
+navbar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(var(--main-hue) 0% 95%);
+    padding: 0.5vh 2vw;
+    height: 6vh;
+    box-shadow: 1px 1px 6px -3px var(--main-color-darkest);
+    z-index: 2;
+    user-select: none;
+}
+main {
+    height: 93vh;
+}

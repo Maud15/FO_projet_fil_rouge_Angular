@@ -1,1 +1,148 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    height: 100%;
+    width: auto;
+    min-width: fit-content;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    min-height: 100vh;
+}
+
+:root body {
+    --background-color: #ededed;
+
+    --main-hue:200deg;
+    --main-color-darkest: hsl(var(--main-hue) 50% 20%);
+    --main-color-darker: hsl(var(--main-hue) 80% 25%);
+    --main-color: hsl(var(--main-hue) 50% 35%);
+    --main-color-lighter: hsl(var(--main-hue) 60% 80%);
+    --main-color-lightest: hsl(var(--main-hue) 85% 95%);
+
+    --userInfo-color: hsl( calc(var(--main-hue) + 190deg) 70% 35%);
+
+    --alert-hue: 0deg;
+    --alert-color-darker: hsl(var(--alert-hue) 82% 28%);
+    --alert-color: hsl(0deg 46% 46%);
+    --alert-color-faded: hsl(var(--alert-hue) 100% 95%);
+    --info-color: #205480;
+    --info-color-faded: #e6f3ff;
+    --warn-color: #b76e00;
+    --warn-color-faded: #ffecd1;
+
+    --fc-button-bg-color: var(--main-color);
+    --fc-button-border-color: var(--fc-button-bg-color);
+    --fc-button-hover-bg-color: var(--main-color-darkest);
+    --fc-button-hover-border-color: var(--fc-button-hover-bg-color);
+
+    --fc-event-bg-color: var(--main-color);
+    --fc-event-border-color: var(--fc-event-bg-color);
+
+    --fc-button-active-bg-color: var(--main-color-lightest);
+    --fc-button-active-border-color: var(--main-color-darker);
+
+    --fc-today-bg-color: var(--main-color-lightest);
+    --fc-past-bg-color: #f5f5f5;
+
+}
+/* FULL CALENDAR STYLE OVERIDE */
+body .fc .fc-button-primary:disabled {
+    border: 1px solid var(--main-color-darkest);
+}
+body .fc .fc-button-primary:not(:disabled).fc-button-active, body .fc .fc-button-primary:not(:disabled):active {
+    color: var(--fc-button-active-border-color);
+}
+button.fc-today-button.fc-button.fc-button-primary {
+    border-radius: 30px;
+}
+.fc .fc-daygrid-day.fc-day-past {
+    background-color: var(--fc-past-bg-color);
+}
+.fc-col-header-cell {
+    background-color: var(--main-color-lightest);
+    color: var(--main-color-darkest);
+}
+/* END FULL CALENDAR STYLE OVERIDE */
+
+app-login, app-signup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    top: 20vh;
+    margin: auto;
+    padding: 8vh 4vw;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 0 4px -1px grey;
+}
+app-full-calendar {
+    width: available;
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+h1 {
+    position: relative;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    padding-right: 14px;
+    background: var(--main-color-lighter);
+    color: var(--main-color-darkest);
+    border-radius: 20px;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: var(--main-color-darkest);
+    font-family: monospace;
+    font-variant-caps: petite-caps;
+    letter-spacing: 2px;
+}
+h1:first-letter {
+    font-size: 1.3em;
+    border-radius: 20px 0 0 20px;
+    background: var(--main-color);
+    color: white;
+    margin-right: 8px;
+    padding: 0 4px 0 14px;
+    vertical-align: sub;
+    border-color: var(--main-color-darkest);
+    border-style: solid;
+    border-width: 0 0 2px 2px;
+}
+
+.toast {
+    position: absolute;
+    margin: 0 auto;
+    padding: 1em 4em;
+    z-index: 5;
+    width: calc(100% - 22em);
+    left: 8em;
+    bottom: 2em;
+    opacity: 1;
+    transition: bottom 1500ms, opacity 1500ms;
+}
+.toast.info-message {
+    background: var(--info-color-faded);
+    color: var(--info-color);
+    border: 1px solid var(--info-color);
+}
+.toast.info-message p:before {
+    content:"INFO : ";
+}
+
+.toast.warn-message {
+    background: var(--warn-color-faded);
+    color: var(--warn-color);
+    border: 1px solid var(--warn-color);
+}
+.toast.warn-message p:before {
+    content:"Attention : ";
+}
+.toast.removing {
+    opacity: 0;
+    bottom: -2em;
+}
