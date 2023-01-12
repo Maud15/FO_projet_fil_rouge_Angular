@@ -23,6 +23,5 @@ button:hover {
     background: transparent;
     color: var(--main-color-darker);
     border: none;
-    text-decoration: underline;
     box-shadow: none;
  }
