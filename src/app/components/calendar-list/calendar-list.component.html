@@ -1,12 +1,109 @@
-<div class="main-container">
-    <p>Afficher la liste des calendriers de l'utilisateur connecté</p>
-    <p>Chaque item est cliquable et redirige vers l'affichage du calendrier correspondant</p>
+<div class="calendars-content">
+    <h2>Calendriers</h2>
 
-
-    Calendriers
-    <ul>
-        <li>Calendrier 1 - Username1</li>
-        <li>Calendrier 2 - Username2</li>
-        <li>Calendrier 3 - Username3</li>
-    </ul>
+    <section>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><b>Identifiant</b></th>
+                        <th><b>Prénom</b></th>
+                        <th><b>Nom</b></th>
+                        <th><b></b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr class="owner" routerLink="/calendar/20">
+                    <td class="title first">
+                        <div class=""><b>Mon calendrier</b></div>
+                    </td>
+                    <td>
+                        <div class="">Martine</div>
+                    </td>
+                    <td>
+                        <div class="">Martin</div>
+                    </td>
+                    <td>
+                        <div class="">Duchemin</div>
+                    </td>
+                    <td class="last">
+                        <div class="fc-icon fc-icon-chevrons-right" style="padding-left: 12px"><i>Propriétaire</i></div>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr  routerLink="/calendar/21">
+                    <td class="title others first">
+                        <div><b>Autres calendriers</b></div>
+                    </td>
+                    <td>
+                        <div class="">Eve</div>
+                    </td>
+                    <td>
+                        <div class="">Eve</div>
+                    </td>
+                    <td>
+                        <div class="">Dutrottoir</div>
+                    </td>
+                    <td class="last">
+                        <div class="fc-icon fc-icon-chevrons-right" style="padding-left: 12px">
+                            <i>Modification</i>
+                        </div>
+                    </td>
+                </tr>
+                <tr  routerLink="/calendar/22">
+                    <td class="first"></td>
+                    <td>
+                        <div class="">GégéDu69</div>
+                    </td>
+                    <td>
+                        <div class="">Gérard</div>
+                    </td>
+                    <td>
+                        <div class="">Duplantin</div>
+                    </td>
+                    <td class="last">
+                        <div class="fc-icon fc-icon-chevrons-right" style="padding-left: 12px">
+                            <i>Modification</i>
+                        </div>
+                    </td>
+                </tr>
+                <tr  routerLink="/calendar/23">
+                    <td class="first"></td>
+                    <td>
+                        <div class="">roger</div>
+                    </td>
+                    <td>
+                        <div class="">Roger</div>
+                    </td>
+                    <td>
+                        <div class=""></div>
+                    </td>
+                    <td class="last">
+                        <div class="fc-icon fc-icon-chevrons-right" style="padding-left: 12px">
+                            <i>Lecture</i>
+                        </div>
+                    </td>
+                </tr>
+                <tr  routerLink="/calendar/24">
+                    <td class="first"></td>
+                    <td>
+                        <div class="">Léa</div>
+                    </td>
+                    <td>
+                        <div class="">Léa</div>
+                    </td>
+                    <td>
+                        <div class="">Hamilton</div>
+                    </td>
+                    <td class="last">
+                        <div class="fc-icon fc-icon-chevrons-right" style="padding-left: 12px">
+                            <i>Modification</i>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </div>

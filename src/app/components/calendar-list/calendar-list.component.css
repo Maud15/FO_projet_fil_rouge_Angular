@@ -1,0 +1,60 @@
+
+.calendars-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--main-color-darker);
+    background: white;
+    border-width: 0 1px 1px 1px;
+    border-color: var(--main-color-darker);
+    border-style: solid;
+    padding: 4vh 8vw 8vh 4vw;
+}
+
+h2 {
+    margin: 0;
+    padding: 1em 1em 0.5em 1em;
+    background: var(--background-color);
+    color: var(--main-color-darkest);
+    border-width: 1px 1px 0 1px;
+    border-color: var(--main-color-darker);
+    border-style: solid;
+    box-shadow: 1px 1px 6px -3px var(--main-color-darkest);
+    z-index: 2;
+}
+table {
+    border-collapse: collapse;
+}
+thead {
+    user-select: none;
+    font-size: 16px;
+}
+.title {
+    padding-right: 2vw;
+}
+.owner td:not(.last) {
+    border-width: 1px  0;
+    border-style: solid;
+    border-color: var(--main-color-darker);
+}
+th, td {
+    padding: 6px 2em;
+}
+tbody tr {
+    cursor: pointer;
+}
+tr:hover td:not(.first):not(.last) {
+    background: var(--main-color-lightest);
+}
+td {
+    line-height: 2em;
+    font-size: 15px;
+}
+

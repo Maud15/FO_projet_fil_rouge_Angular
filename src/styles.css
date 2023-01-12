@@ -85,6 +85,15 @@ app-full-calendar {
     width: -webkit-fill-available;
 }
 
+app-profile, app-calendar-list {
+    display: block;
+    height: 89vh;
+    width: auto;
+    padding: 4vh 0 0 0;
+    background-color: var(--background-color);
+}
+
+
 h1 {
     position: relative;
     display: block;

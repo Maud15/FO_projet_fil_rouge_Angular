@@ -123,8 +123,8 @@ export class FullCalendarComponent implements OnInit {
             let formattedEvent: EventInput = {
                 id: event.id != undefined ? ''+event.id : undefined,
                 title: event.title,
-                start: event.startDate != null ? new Date(event.startDate) : undefined,
-                end: event.endDate != null ? new Date(event.endDate) : undefined,
+                start: event.startDate != null ? event.startDate : undefined,
+                end: event.endDate != null ? event.endDate : undefined,
                 fullDay: event.fullDay
             }
             formattedData.push(formattedEvent);
@@ -138,7 +138,7 @@ export class FullCalendarComponent implements OnInit {
     }
 
     handleDateSelect(selectInfo: DateSelectArg) {
-        const title = prompt('Please enter a new title for your event');
+        const title = prompt('Nom de l\'évènement');
         const calendarApi = selectInfo.view.calendar;
 
         calendarApi.unselect(); // clear date selection
@@ -161,7 +161,7 @@ export class FullCalendarComponent implements OnInit {
             error: (err) => console.log(err.name)
 
         });
-        if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+        if (confirm(`Voulez-vous supprimer cet évènement : '${clickInfo.event.title}' ?`)) {
             clickInfo.event.remove();
         }
     }

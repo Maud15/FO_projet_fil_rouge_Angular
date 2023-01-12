@@ -29,7 +29,7 @@ b { /* used for event dates/times */
     margin-right: 3px;
 }
 full-calendar {
-    border: 1px solid lightgray;
+    border: 1px solid var(--main-color-darker);
     padding: 2em;
     background-color: white;
 }
@@ -75,7 +75,6 @@ full-calendar {
 #sidebar-container {
     position: relative;
     padding: 2em;
-    height: 93vh;
     overflow: auto;
 }
 
@@ -134,9 +133,28 @@ full-calendar {
     font-size: 1.5em;
 }
 
-/*.toggle-sidebar.closed:before {
-    content: ">";
+
+
+
+/* ------ MOCKUP  ------ */
+
+
+table {
+    border-collapse: collapse;
+    margin-left: 48px;
+    margin-top: 12px;
 }
-.toggle-sidebar:before {
-    content: "<";
-}*/
+
+th, td {
+    padding: 6px 8px;
+}
+tbody tr {
+    cursor: pointer;
+}
+tr:hover td:not(.rights) {
+    background: var(--main-color-lightest);
+}
+td {
+    line-height: 2em;
+    font-size: 15px;
+}

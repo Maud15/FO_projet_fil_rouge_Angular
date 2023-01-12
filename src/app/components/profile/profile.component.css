@@ -1,8 +1,30 @@
-section{
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+section {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 4vh 4vw;
+    color: var(--main-color-darker);
+    background: white;
+    border-width: 0 1px 1px 1px;
+    border-color: var(--main-color-darker);
+    border-style: solid;
+    padding-right: 4vw;
+}
+section>div {
+    padding: 4vh 0;
+}
+section p {
+    padding: 1em 4vw;
+}
+span {
+    padding: 1em;
 }
 
 form{
@@ -20,4 +42,16 @@ mat-form-field {
     margin: 2px 4px;
     color: white;
     background-color: var(--main-color);
+}
+
+h2 {
+    margin: 0;
+    padding: 1em 1em 0.5em 1em;
+    background: var(--background-color);
+    color: var(--main-color-darkest);
+    border-width: 1px 1px 0 1px;
+    border-color: var(--main-color-darker);
+    border-style: solid;
+    box-shadow: 1px 1px 6px -3px var(--main-color-darkest);
+    z-index: 2;
 }

@@ -1,43 +1,43 @@
-<h2>Page profil utilisateur</h2>
-<!--TODO-->
+<div class="profile-content">
+    <h2>Profil utilisateur</h2>
 
-<section>
-    <div *ngIf="!isModified">
-        <p>Pseudo : {{user.pseudo }}</p>
-        <p>Email : {{user.email}}</p>
-        <p>Prénom : {{user.firstname}} </p>
-        <p>Nom : {{user.lastname}}</p>
-        <p>Ville : {{user.city}}</p>
-<!--"        <div *ngFor="let calendar of user.calendarRightsList "></div>"-->
-        <p> Calendrier : {{user.calendarRightsList}}</p>
-    </div>
-    <div *ngIf="isModified">
-        <p>Pseudo : {{user.pseudo }}</p>
-        <p>Email : {{user.email}}</p>
-        <form [formGroup]="modifyForm">
-            <mat-form-field appearance="fill">
-                <mat-label>Prénom</mat-label>
-                <input matInput value="{{user.firstname}}" formControlName="firstname">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Nom</mat-label>
-                <input matInput value="{{user.lastname}}" formControlName="lastname">
-            </mat-form-field>
-            <button mat-flat-button type = "submit" (click)="submitUser()">SUBMIT</button>
-        </form>
-        <p>Ville : {{user.city}}</p>
-        <p> Calendrier : {{user.calendarRightsList}}</p>
-    </div>
+    <section>
+        <div *ngIf="!isModified">
+            <p><b>Identifiant</b><span>-</span>{{user.pseudo }}</p>
+            <p><b>Email</b><span>-</span> {{user.email}}</p>
+            <p><b>Nom</b><span>-</span> {{user.lastname}}</p>
+            <p><b>Prénom</b><span>-</span> {{user.firstname}} </p>
+            <p><b>Ville</b><span>-</span> {{user.city}}</p>
+    <!--"        <div *ngFor="let calendar of user.calendarRightsList "></div>"-->
+    <!--        <p> Calendrier : {{user.calendarRightsList}}</p>-->
+        </div>
+        <div *ngIf="isModified">
+            <p><b>Identifiant</b> {{user.pseudo }}</p>
+            <p><b>Email</b> {{user.email}}</p>
+            <form [formGroup]="modifyForm">
+                <mat-form-field appearance="fill">
+                    <mat-label><b>Nom</b></mat-label>
+                    <input matInput value="{{user.lastname}}" formControlName="lastname">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label><b>Prénom</b></mat-label>
+                    <input matInput value="{{user.firstname}}" formControlName="firstname">
+                </mat-form-field>
+                <button mat-flat-button type = "submit" (click)="submitUser()">Valider</button>
+            </form>
+            <p><b>Ville</b> {{user.city}}</p>
+<!--            <p> Calendrier : {{user.calendarRightsList}}</p>-->
+        </div>
 
-    <div *ngIf="!isModified">
-        <button mat-flat-button type = "submit" (click)="toModify()"> Modifier ?</button>
-    </div>
-    <div *ngIf="isModified">
-        <button mat-flat-button type = "submit" (click)="toModify()"> Ne pas modifier </button>
-    </div>
-
-
-</section>
+        <div *ngIf="!isModified">
+            <button mat-flat-button type = "submit" (click)="toModify()">Modifier</button>
+        </div>
+        <div *ngIf="isModified">
+            <button mat-flat-button type = "submit" (click)="toModify()">Annuler</button>
+        </div>
 
 
+    </section>
 
+
+</div>

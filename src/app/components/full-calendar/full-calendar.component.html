@@ -10,8 +10,48 @@
                     Infos
                 </h2>
                 <ul>
-                    <li>Propriétaire : <b>{{ user.pseudo }}</b></li>
-                    <li>Collaborateurs : </li>
+                    <li><b>Propriétaire</b><span class="value">{{ user.pseudo }}</span></li>
+                    <li><b>Collaborateurs</b>
+                        <table id="collaborators" class="value">
+                            <thead>
+                                <th>Identifiant</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                            </thead>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Eve</td>
+                                <td>Dutrottoir</td>
+                                <td class="fc-icon fc-icon-chevrons-right rights" style="padding-left: 12px">
+                                    <i>Lecture</i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>roger</td>
+                                <td>Roger</td>
+                                <td></td>
+                                <td class="fc-icon fc-icon-chevrons-right rights" style="padding-left: 12px">
+                                    <i>Lecture</i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Léa</td>
+                                <td>Léa</td>
+                                <td>Hamilton</td>
+                                <td class="fc-icon fc-icon-chevrons-right rights" style="padding-left: 12px">
+                                    <i>Modification</i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>arctix83</td>
+                                <td>Eloïse</td>
+                                <td>Leclerc</td>
+                                <td class="fc-icon fc-icon-chevrons-right rights" style="padding-left: 12px">
+                                    <i>Modification</i>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
                 </ul>
             </section>
             <section id="sidebar-options">
@@ -39,20 +79,20 @@
                 </h2>
                 <ul>
                     <li *ngFor='let event of currentEvents'>
-                        <b>{{event.startStr}} - </b>
-                        <span>{{event.title}}</span>
+                        <b class="date-event">{{event.startStr}}</b>
+                        <span> - {{event.title}}</span>
                     </li>
                 </ul>
             </section>
             <section id="sidebar-help" class="closed">
                 <h2 (click)="toggleSidebarSection($event,'sidebar-help')">
                     <div class="fc-icon fc-icon-chevron-right"></div>
-                    Help
+                    Aide
                 </h2>
                 <ul>
-                    <li>Select dates and you will be prompted to create a new event</li>
-                    <li>Drag, drop, and resize events</li>
-                    <li>Click an event to delete it</li>
+                    <li>Sélectionner une date pour créer un évènement</li>
+                    <li>Cliquer, glisser, lacher pour déplacer un évènement</li>
+                    <li>Sélectionner un évènement pour le supprimer</li>
                 </ul>
             </section>
 
