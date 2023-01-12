@@ -21,4 +21,9 @@ export class UserService {
     modifyUser(userData: UserData): void{
         this.http.put<UserData>(`${baseUrl}/users/profile`, userData).subscribe();
     }
+
+    getUserByCalendarId(calendarId: number): Observable<UserData> {
+        return this.http.get<UserData>(`${baseUrl}/calendar/${calendarId}/user`)
+    }
+
 }

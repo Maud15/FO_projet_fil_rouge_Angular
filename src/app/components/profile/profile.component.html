@@ -3,7 +3,7 @@
 
     <section>
         <div *ngIf="!isModified">
-            <p><b>Identifiant</b><span>-</span>{{user.pseudo }}</p>
+            <p><b>Identifiant</b><span>-</span>{{user.pseudo}}</p>
             <p><b>Email</b><span>-</span> {{user.email}}</p>
             <p><b>Nom</b><span>-</span> {{user.lastname}}</p>
             <p><b>Prénom</b><span>-</span> {{user.firstname}} </p>
@@ -12,7 +12,7 @@
     <!--        <p> Calendrier : {{user.calendarRightsList}}</p>-->
         </div>
         <div *ngIf="isModified">
-            <p><b>Identifiant</b> {{user.pseudo }}</p>
+            <p><b>Identifiant</b> {{user.pseudo}}</p>
             <p><b>Email</b> {{user.email}}</p>
             <form [formGroup]="modifyForm">
                 <mat-form-field appearance="fill">

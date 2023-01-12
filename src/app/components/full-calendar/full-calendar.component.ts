@@ -17,6 +17,7 @@ import {CalEvent} from "../../models/CalEvent";
 import {EventImpl} from "@fullcalendar/core/internal";
 import {UserService} from "../../services/user.service";
 import {UserData} from "../../models/userData";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-full-calendar',
@@ -58,6 +59,8 @@ export class FullCalendarComponent implements OnInit {
     currentEvents: EventApi[] = [];
     hideSidebar: boolean = true;
     events: any;
+    mainCalendar: boolean = true;
+    calendarId!: number;
     user: UserData = {
         'email': '',
         'pseudo': '',
@@ -67,53 +70,23 @@ export class FullCalendarComponent implements OnInit {
         "roleList": ''
     };
 
-    constructor(private changeDetector: ChangeDetectorRef, private userService: UserService, private eventService: EventService) {
+    constructor(private activatedRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef, private userService: UserService, private eventService: EventService) {
     }
 
     ngOnInit(): void {
-        this.eventService.getAllFromMain().subscribe({
-            next: (res) => {
-                this.events = this.getFormattedEventData(res);
-                console.log(this.events);
-            }
+        this.activatedRoute.params.subscribe(paramsId => {
+            this.calendarId = paramsId['id'];
         })
-        this.userService.getUser().subscribe({
-            next: (user) => this.user = user,
-            error: (err) => console.log(err)
-        })
+        if(this.calendarId != undefined) {
+            this.mainCalendar = false;
+        }
+        this.getAll();
+        this.getUser();
     }
 
     getFormattedEventData(res: CalEvent[]): EventInput[] {
         let formattedData: EventInput[] = [];
         res.forEach(event => {
-            /*let startDate;
-            let endDate;
-            if(event.startDate != null && event.startDate.indexOf("T") < 0) {
-                event.startDate += 'T00:00:00';
-                startDate = new Date(event.startDate).toDateString();
-            } else if(event.startDate != null) {
-                endDate = new Date(event.startDate);
-            }
-            if(event.endDate != null && event.endDate.indexOf("T") < 0) {
-                event.endDate += 'T00:00:00';
-                endDate = new Date(event.endDate).toDateString();
-            } else if(event.endDate != null) {
-                endDate = new Date(event.endDate);
-            }
-            console.log(event.title)
-            if(event.startDate != null){
-            console.log('start - ' + startDate + ' ' + new Date(event.startDate) + ' ' + event.startDate);
-            }
-            if(event.endDate != null){
-            console.log('end + ' + endDate + ' ' + event.endDate);
-            }
-            let formattedEvent: EventInput = {
-                id: event.id != undefined ? ''+event.id : undefined,
-                title: event.title,
-                start: event.startDate != null ? startDate : undefined,
-                end: event.endDate != null ? endDate : undefined,
-                fullDay: event.fullDay
-            };*/
             if(event.startDate != null && event.startDate.indexOf("T") < 0) {
                 event.startDate += 'T00:00:00';
             }
@@ -171,6 +144,26 @@ export class FullCalendarComponent implements OnInit {
         this.changeDetector.detectChanges();
     }
 
+    moveEvent(eventDropInfo: EventDropArg) {
+        let event = {
+            oldData: eventDropInfo.oldEvent,
+            newData: eventDropInfo.event,
+            revert: () => {eventDropInfo.revert()}
+        }
+        this.updateDateEvent(event);
+    }
+    resizeEvent(eventResizeInfo: EventResizeDoneArg) {
+        let event = {
+            oldData: eventResizeInfo.oldEvent,
+            newData: eventResizeInfo.event,
+            revert: () => {eventResizeInfo.revert()}
+        }
+        this.updateDateEvent(event);
+    }
+
+
+/* -----   My Code   ----- */
+
     toggleSidebar(): void {
         this.hideSidebar = !this.hideSidebar;
         const $sidebar = document.getElementById('calendar-sidebar');
@@ -201,93 +194,8 @@ export class FullCalendarComponent implements OnInit {
         }
     }
 
-    createEvent(calendarApi:  CalendarApi, addInfo: CalEvent): void {
-        this.eventService.createInMain(addInfo).subscribe({
-            next: (newEventId) => {
-                this.createInfoMsg(`Evènement -${addInfo.title}- créé`);
-                addInfo.id = newEventId;
-                if(addInfo.id != undefined && addInfo.startDate != null && addInfo.endDate != null) {
-                    calendarApi.addEvent({
-                        id: addInfo.id.toString(),
-                        title: addInfo.title,
-                        start: new Date(addInfo.startDate),
-                        end: new Date(addInfo.endDate),
-                        allDay: addInfo.fullDay
-                    });
 
-                }
-            },
-            error: (err) => {
-                this.createWarnMsg(err.name);
-                console.log(err)
-            }
-        })
-    }
-
-    deleteEvent(removeInfo: EventRemoveArg):void {
-        let eventTitle = removeInfo.event.title;
-        this.eventService.deleteFromMain(parseInt(removeInfo.event.id)).subscribe({
-            next: () => {
-                this.createInfoMsg(`Evènement -${eventTitle}- supprimé`);
-            },
-            error: (err) => {
-                this.createWarnMsg(err.name);
-                console.log(err)
-            }
-        });
-    }
-    updateEvent(updateInfo: EventChangeArg): void {
-        let oldInfo = updateInfo.oldEvent;
-         let newEventData: CalEvent = {
-             title: updateInfo.event.title,
-             startDate: oldInfo.start != null ? oldInfo.start.toISOString() : null,
-             endDate: oldInfo.end != null ? oldInfo.end.toISOString() : null,
-             fullDay: oldInfo.allDay
-         }
-        this.eventService.updateFromMain(parseInt(updateInfo.oldEvent.id), newEventData).subscribe({
-            next: () => {
-                this.createInfoMsg(`Evènement -${newEventData.title}- mis à jour`);
-            },
-            error: (err) => {
-                console.log(err)
-            }
-        })
-    }
-    moveEvent(eventDropInfo: EventDropArg) {
-        let event = {
-            oldData: eventDropInfo.oldEvent,
-            newData: eventDropInfo.event,
-            revert: () => {eventDropInfo.revert()}
-        }
-        this.updateDateEvent(event);
-    }
-    resizeEvent(eventResizeInfo: EventResizeDoneArg) {
-        let event = {
-            oldData: eventResizeInfo.oldEvent,
-            newData: eventResizeInfo.event,
-            revert: () => {eventResizeInfo.revert()}
-        }
-        this.updateDateEvent(event);
-    }
-
-    updateDateEvent(event: {oldData: EventImpl, newData: EventImpl, revert: Function}/*oldEvent: EventImpl, event: EventImpl*/) {
-         let newEventData: CalEvent = {
-             title: event.oldData.title,
-             startDate: event.newData.start != null ? event.newData.start.toISOString() : null,
-             endDate: event.newData.end != null ? event.newData.end.toISOString() : null,
-             fullDay: event.newData.allDay
-         }
-        this.eventService.updateFromMain(parseInt(event.oldData.id), newEventData).subscribe({
-            next: () => {
-                this.createInfoMsg(`Evènement -${newEventData.title}- mis à jour`);
-            },
-            error: (err) => {
-                console.log(err)
-                event.revert();
-            }
-        })
-    }
-
+/* -----   Messages   ----- */
 
     createInfoMsg(msg: string): void {
         this.createMsg('info-message', msg);
@@ -315,5 +223,131 @@ export class FullCalendarComponent implements OnInit {
                 infoMsg.remove();
             },time);
         },time);
+    }
+
+    isById() {
+        return !this.mainCalendar && this.calendarId !== undefined && this.calendarId !== null
+    }
+
+    getUser() {
+        let user;
+        if(this.isById()) {
+            user = this.userService.getUserByCalendarId(this.calendarId);
+        } else {
+            user = this.userService.getUser();
+        }
+        user.subscribe({
+            next: (user) => this.user = user,
+            error: (err) => console.log(err)
+        })
+    }
+
+/* -----   CRUD EVENTS   ----- */
+
+    getAll() {
+        let all;
+        if(this.isById()) {
+            all = this.eventService.getAll(this.calendarId);
+        } else {
+            all = this.eventService.getAllFromMain();
+        }
+        all.subscribe({
+            next: (res) => {
+                this.events = this.getFormattedEventData(res);
+                console.log(this.events);
+            },
+            error: (err) => {
+                this.createWarnMsg(err.name);
+                console.log(err)
+            }
+        })
+    }
+
+    createEvent(calendarApi:  CalendarApi, addInfo: CalEvent): void {
+        let create;
+        if(this.isById()) {
+            create = this.eventService.create(this.calendarId, addInfo);
+        } else {
+            create = this.eventService.createInMain(addInfo);
+        }
+        create.subscribe({
+            next: (newEventId) => {
+                this.createInfoMsg(`Evènement -${addInfo.title}- créé`);
+                addInfo.id = newEventId;
+                if(addInfo.id != undefined && addInfo.startDate != null && addInfo.endDate != null) {
+                    calendarApi.addEvent({
+                        id: addInfo.id.toString(),
+                        title: addInfo.title,
+                        start: new Date(addInfo.startDate),
+                        end: new Date(addInfo.endDate),
+                        allDay: addInfo.fullDay
+                    });
+                }
+            },
+            error: (err) => {
+                this.createWarnMsg(err.name);
+                console.log(err)
+            }
+        })
+    }
+    updateDateEvent(event: {oldData: EventImpl, newData: EventImpl, revert: Function}) {
+        let newEventData: CalEvent = {
+            title: event.oldData.title,
+            startDate: event.newData.start != null ? event.newData.start.toISOString() : null,
+            endDate: event.newData.end != null ? event.newData.end.toISOString() : null,
+            fullDay: event.newData.allDay
+        }
+        let update;
+        if(this.isById()) {
+            update = this.eventService.update(this.calendarId, parseInt(event.oldData.id), newEventData);
+        } else {
+            update = this.eventService.updateFromMain(parseInt(event.oldData.id), newEventData);
+        }
+        update.subscribe({
+            next: () => {
+                this.createInfoMsg(`Evènement -${newEventData.title}- mis à jour`);
+            },
+            error: (err) => {
+                this.createWarnMsg(err.name);
+                console.log(err)
+                event.revert();
+            }
+        })
+    }
+    updateEvent(updateInfo: EventChangeArg): void {
+        let oldInfo = updateInfo.oldEvent;
+        let newEventData: CalEvent = {
+            title: updateInfo.event.title,
+            startDate: oldInfo.start != null ? oldInfo.start.toISOString() : null,
+            endDate: oldInfo.end != null ? oldInfo.end.toISOString() : null,
+            fullDay: oldInfo.allDay
+        }
+        let update;
+        if(this.isById()) {
+            update = this.eventService.update(this.calendarId, parseInt(updateInfo.oldEvent.id), newEventData);
+        } else {
+            update = this.eventService.updateFromMain(parseInt(updateInfo.oldEvent.id), newEventData);
+        }
+        update.subscribe({
+            next: () => {
+                this.createInfoMsg(`Evènement -${newEventData.title}- mis à jour`);
+            },
+            error: (err) => {
+                this.createWarnMsg(err.name);
+                console.log(err)
+            }
+        })
+    }
+    deleteEvent(removeInfo: EventRemoveArg):void {
+        let eventTitle = removeInfo.event.title;
+        this.eventService.deleteFromMain(parseInt(removeInfo.event.id)).subscribe({
+            next: () => {
+                this.createInfoMsg(`Evènement -${eventTitle}- supprimé`);
+            },
+            error: (err) => {
+                this.createWarnMsg(err.name);
+                console.log(err)
+            }
+        });
     }
 }
